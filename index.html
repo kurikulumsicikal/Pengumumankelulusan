@@ -33,7 +33,10 @@
 
         #hasil-wrapper { display: none; }
         .status-badge { text-align: center; padding: 20px; border-radius: 20px; font-size: 24px; font-weight: 800; margin: 20px 0; letter-spacing: 2px; }
-        .lulus { background: #dcfce7; color: #166534; border: 2px solid #bbf7d0; box-shadow: 0 10px 15px -3px rgba(74, 222, 128, 0.2); }
+        
+        /* GAYA BARU UNTUK LULUS (WARNA BIRU) */
+        .lulus { background: #dbeafe; color: #1e40af; border: 2px solid #bfdbfe; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1); }
+        
         .tidak { background: #fee2e2; color: #991b1b; border: 2px solid #fecdd3; }
     </style>
 </head>
@@ -110,4 +113,16 @@
                 document.getElementById('form-pencarian').style.display = "none";
                 document.getElementById('out-nama').innerText = data.nama;
                 document.getElementById('out-kelas').innerText = data.kelas;
-                const box = document.getElementById
+                const box = document.getElementById('out-status');
+                box.innerText = data.keterangan;
+                box.className = "status-badge " + (data.keterangan.toUpperCase() === "LULUS" ? "lulus" : "tidak");
+                document.getElementById('hasil-wrapper').style.display = "block";
+            } else {
+                alert("NISN tidak ditemukan!");
+            }
+        } catch (e) { alert("Masalah koneksi."); }
+    }
+</script>
+
+</body>
+</html>
