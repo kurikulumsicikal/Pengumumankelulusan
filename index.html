@@ -17,8 +17,8 @@
         .btn-cek { width: 100%; background: var(--primary); color: white; padding: 16px; border: none; border-radius: 15px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-cek:hover { background: #1e40af; transform: translateY(-2px); }
 
-        /* TAMPILAN DATA SISWA YANG BARU */
-        .data-siswa-box { background: #ffffff; border-radius: 20px; padding: 20px; border: 1px solid #e2e8f0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
+        /* TAMPILAN DATA SISWA */
+        .data-siswa-box { background: #ffffff; border-radius: 20px; padding: 20px; border: 1px solid #e2e8f0; }
         .label-data { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; margin-bottom: 4px; display: block; }
         .isi-data { font-size: 18px; color: #1e3a8a; font-weight: 800; display: block; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
         .isi-data:last-child { margin-bottom: 0; border-bottom: none; }
@@ -54,7 +54,7 @@
 
         <div id="hasil-wrapper">
             <div class="data-siswa-box">
-                <span class="label-data">Nama</span>
+                <span class="label-data">Nama Peserta Didik</span>
                 <span id="out-nama" class="isi-data">-</span>
                 
                 <span class="label-data">Kelas</span>
@@ -86,13 +86,12 @@
 
                     <div class="sanksi">
                         <b class="red">Sanksi Pelanggaran:</b><br>
-                        Sanksi tegas berupa <b>penangguhan penyerahan berkas kelulusan</b> (Ijazah, SKL, dll) bagi yang terbukti melanggar.
+                        Sanksi tegas berupa <b>penangguhan penyerahan berkas kelulusan</b> bagi yang terbukti melanggar.
                     </div>
                 </div>
             </div>
 
-            <p style="font-size: 11px; text-align: center; color: #64748b; font-style: italic; margin: 20px 0;">"Pendidikan adalah tiket ke masa depan, hari esok dimiliki oleh orang-orang yang mempersiapkan dirinya hari ini."</p>
-            <button class="btn-cek" style="background:#64748b" onclick="location.reload()">KEMBALI KE PENCARIAN</button>
+            <button class="btn-cek" style="background:#64748b; margin-top:25px;" onclick="location.reload()">KEMBALI KE PENCARIAN</button>
         </div>
     </div>
 </div>
@@ -111,16 +110,4 @@
                 document.getElementById('form-pencarian').style.display = "none";
                 document.getElementById('out-nama').innerText = data.nama;
                 document.getElementById('out-kelas').innerText = data.kelas;
-                const box = document.getElementById('out-status');
-                box.innerText = data.keterangan;
-                box.className = "status-badge " + (data.keterangan.toUpperCase() === "LULUS" ? "lulus" : "tidak");
-                document.getElementById('hasil-wrapper').style.display = "block";
-            } else {
-                alert("NISN tidak ditemukan!");
-            }
-        } catch (e) { alert("Masalah koneksi."); }
-    }
-</script>
-
-</body>
-</html>
+                const box = document.getElementById
