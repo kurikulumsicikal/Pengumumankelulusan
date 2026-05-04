@@ -15,19 +15,18 @@
         .content { padding: 25px; }
         input { width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 15px; font-size: 16px; font-weight: 600; box-sizing: border-box; text-align: center; margin-bottom: 15px; }
         .btn-cek { width: 100%; background: var(--primary); color: white; padding: 16px; border: none; border-radius: 15px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-cek:hover { background: #1e40af; transform: translateY(-2px); }
-
+        
         .data-siswa-box { background: #ffffff; border-radius: 20px; padding: 20px; border: 1px solid #e2e8f0; }
         .label-data { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; margin-bottom: 4px; display: block; }
         .isi-data { font-size: 18px; color: #1e3a8a; font-weight: 800; display: block; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
         .isi-data:last-child { margin-bottom: 0; border-bottom: none; }
 
-        /* Teks Selamat */
-        .selamat-teks { font-weight: 800; color: #1e3a8a; font-size: 18px; text-align: center; margin-top: 20px; display: block; }
-
-        .status-badge { text-align: center; padding: 20px; border-radius: 20px; font-size: 24px; font-weight: 800; margin: 10px 0 20px 0; letter-spacing: 2px; }
+        .status-badge { text-align: center; padding: 20px; border-radius: 20px; font-size: 24px; font-weight: 800; margin: 20px 0 10px 0; letter-spacing: 2px; }
         .lulus { background: #dbeafe; color: #1e40af; border: 2px solid #bfdbfe; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1); }
         .tidak { background: #fee2e2; color: #991b1b; border: 2px solid #fecdd3; }
+
+        /* Teks Selamat (Pindah ke bawah) */
+        .selamat-teks { font-weight: 800; color: #1e3a8a; font-size: 18px; text-align: center; margin-bottom: 20px; display: none; }
 
         .maklumat-box { text-align: left; background: white; border-radius: 20px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .maklumat-head { background: #1e3a8a; color: white; padding: 12px; text-align: center; font-weight: 800; font-size: 13px; }
@@ -59,20 +58,18 @@
             <div class="data-siswa-box">
                 <span class="label-data">Nama Peserta Didik</span>
                 <span id="out-nama" class="isi-data">-</span>
-                
                 <span class="label-data">Kelas</span>
                 <span id="out-kelas" class="isi-data">-</span>
             </div>
             
-            <span id="teks-selebrasi" class="selamat-teks"></span>
-            
             <div id="out-status" class="status-badge"></div>
+            
+            <div id="teks-selebrasi" class="selamat-teks">Selamat atas Kelulusan Anda!</div>
 
             <div class="maklumat-box">
                 <div class="maklumat-head">INFORMASI PENTING</div>
                 <div class="maklumat-body">
                     <p style="font-style: italic; color: #64748b; margin-bottom: 15px;">Pihak sekolah menghimbau seluruh peserta didik kelas XII untuk memperhatikan poin-poin berikut:</p>
-                    
                     <span class="section-title red">1. Larangan Tindakan Indisipliner:</span>
                     <ul style="padding-left: 15px; margin: 0;">
                         <li>Vandalisme, perusakan fasilitas umum, & corat-coret seragam.</li>
@@ -80,7 +77,6 @@
                         <li>Pesta minuman keras atau penyalahgunaan zat terlarang.</li>
                         <li>Melanggar norma agama, hukum, dan kesusilaan.</li>
                     </ul>
-
                     <span class="section-title green">2. Implementasi Sikap Terpuji:</span>
                     <ul style="padding-left: 15px; margin: 0;">
                         <li>Sujud syukur kepada Tuhan Yang Maha Esa.</li>
@@ -88,7 +84,6 @@
                         <li>Ungkapan terima kasih dan hormat kepada Bapak/Ibu Guru atas segala bimbingan.</li>
                         <li>Menjaga hubungan baik antar rekan sejawat.</li>
                     </ul>
-
                     <div class="sanksi">
                         <b class="red">Sanksi Pelanggaran:</b><br>
                         Sanksi tegas berupa <b>penangguhan penyerahan berkas kelulusan</b> bagi yang terbukti melanggar.
@@ -123,11 +118,10 @@
                 
                 if (data.keterangan.toUpperCase() === "LULUS") {
                     box.className = "status-badge lulus";
-                    selebrasi.innerText = "Selamat atas Kelulusan Anda!";
                     selebrasi.style.display = "block";
                 } else {
                     box.className = "status-badge tidak";
-                    selebrasi.style.display = "none"; // Jangan tampilkan selamat jika tidak lulus
+                    selebrasi.style.display = "none";
                 }
                 
                 document.getElementById('hasil-wrapper').style.display = "block";
