@@ -17,13 +17,19 @@
         .btn-cek { width: 100%; background: var(--primary); color: white; padding: 16px; border: none; border-radius: 15px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-cek:hover { background: #1e40af; transform: translateY(-2px); }
 
-        /* TAMPILAN DATA SISWA */
         .data-siswa-box { background: #ffffff; border-radius: 20px; padding: 20px; border: 1px solid #e2e8f0; }
         .label-data { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; margin-bottom: 4px; display: block; }
         .isi-data { font-size: 18px; color: #1e3a8a; font-weight: 800; display: block; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
         .isi-data:last-child { margin-bottom: 0; border-bottom: none; }
 
-        .maklumat-box { margin-top: 25px; text-align: left; background: white; border-radius: 20px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        /* Teks Selamat */
+        .selamat-teks { font-weight: 800; color: #1e3a8a; font-size: 18px; text-align: center; margin-top: 20px; display: block; }
+
+        .status-badge { text-align: center; padding: 20px; border-radius: 20px; font-size: 24px; font-weight: 800; margin: 10px 0 20px 0; letter-spacing: 2px; }
+        .lulus { background: #dbeafe; color: #1e40af; border: 2px solid #bfdbfe; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1); }
+        .tidak { background: #fee2e2; color: #991b1b; border: 2px solid #fecdd3; }
+
+        .maklumat-box { text-align: left; background: white; border-radius: 20px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .maklumat-head { background: #1e3a8a; color: white; padding: 12px; text-align: center; font-weight: 800; font-size: 13px; }
         .maklumat-body { padding: 20px; font-size: 12px; line-height: 1.6; color: #334155; }
         .section-title { font-weight: 800; display: block; margin-top: 10px; margin-bottom: 5px; text-transform: uppercase; }
@@ -32,12 +38,6 @@
         .sanksi { background: #fff1f2; padding: 10px; border-radius: 10px; border: 1px solid #fecdd3; margin-top: 15px; }
 
         #hasil-wrapper { display: none; }
-        .status-badge { text-align: center; padding: 20px; border-radius: 20px; font-size: 24px; font-weight: 800; margin: 20px 0; letter-spacing: 2px; }
-        
-        /* GAYA BARU UNTUK LULUS (WARNA BIRU) */
-        .lulus { background: #dbeafe; color: #1e40af; border: 2px solid #bfdbfe; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1); }
-        
-        .tidak { background: #fee2e2; color: #991b1b; border: 2px solid #fecdd3; }
     </style>
 </head>
 <body>
@@ -63,6 +63,8 @@
                 <span class="label-data">Kelas</span>
                 <span id="out-kelas" class="isi-data">-</span>
             </div>
+            
+            <span id="teks-selebrasi" class="selamat-teks"></span>
             
             <div id="out-status" class="status-badge"></div>
 
@@ -113,9 +115,21 @@
                 document.getElementById('form-pencarian').style.display = "none";
                 document.getElementById('out-nama').innerText = data.nama;
                 document.getElementById('out-kelas').innerText = data.kelas;
+                
                 const box = document.getElementById('out-status');
+                const selebrasi = document.getElementById('teks-selebrasi');
+                
                 box.innerText = data.keterangan;
-                box.className = "status-badge " + (data.keterangan.toUpperCase() === "LULUS" ? "lulus" : "tidak");
+                
+                if (data.keterangan.toUpperCase() === "LULUS") {
+                    box.className = "status-badge lulus";
+                    selebrasi.innerText = "Selamat atas Kelulusan Anda!";
+                    selebrasi.style.display = "block";
+                } else {
+                    box.className = "status-badge tidak";
+                    selebrasi.style.display = "none"; // Jangan tampilkan selamat jika tidak lulus
+                }
+                
                 document.getElementById('hasil-wrapper').style.display = "block";
             } else {
                 alert("NISN tidak ditemukan!");
