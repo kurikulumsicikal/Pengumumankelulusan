@@ -16,7 +16,8 @@
         input { width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 15px; font-size: 16px; font-weight: 600; box-sizing: border-box; text-align: center; margin-bottom: 15px; }
         .btn-cek { width: 100%; background: var(--primary); color: white; padding: 16px; border: none; border-radius: 15px; font-size: 16px; font-weight: 700; cursor: pointer; }
         
-        .maklumat-box { margin-top: 30px; text-align: left; background: white; border-radius: 20px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        /* Gaya Kotak Informasi */
+        .maklumat-box { margin-top: 20px; text-align: left; background: white; border-radius: 20px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .maklumat-head { background: #1e3a8a; color: white; padding: 12px; text-align: center; font-weight: 800; font-size: 13px; }
         .maklumat-body { padding: 20px; font-size: 12px; line-height: 1.6; color: #334155; }
         .section-title { font-weight: 800; display: block; margin-top: 10px; margin-bottom: 5px; text-transform: uppercase; }
@@ -43,6 +44,15 @@
         <div id="form-pencarian">
             <input type="text" id="nisn-siswa" placeholder="Masukkan 10 digit NISN">
             <button class="btn-cek" onclick="cekKelulusan()">CEK HASIL SEKARANG</button>
+        </div>
+
+        <div id="hasil-wrapper">
+            <div style="background: #f1f5f9; padding: 20px; border-radius: 15px;">
+                <p style="margin: 5px 0;">Nama: <b id="out-nama"></b></p>
+                <p style="margin: 5px 0;">Kelas: <b id="out-kelas"></b></p>
+            </div>
+            
+            <div id="out-status" class="status-badge"></div>
 
             <div class="maklumat-box">
                 <div class="maklumat-head">INFORMASI PENTING</div>
@@ -67,19 +77,12 @@
 
                     <div class="sanksi">
                         <b class="red">Sanksi Pelanggaran:</b><br>
-                        Sanksi tegas berupa <b>penangguhan penyerahan berkas kelulusan</b> (Ijazah, SKL, dll) bagi yang terbukti melanggar.
+                        Sanksi tegas berupa <b>penangguhan penyerahan berkas kelulusan</b> bagi yang terbukti melanggar.
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="hasil-wrapper">
-            <div style="background: #f1f5f9; padding: 20px; border-radius: 15px;">
-                <p style="margin: 5px 0;">Nama: <b id="out-nama"></b></p>
-                <p style="margin: 5px 0;">Kelas: <b id="out-kelas"></b></p>
-            </div>
-            <div id="out-status" class="status-badge"></div>
-            <p style="font-size: 11px; text-align: center; color: #64748b; font-style: italic; margin-bottom: 15px;">"Tetaplah rendah hati dan jadilah kebanggaan SMAN 1 Cikalongwetan."</p>
+            <p style="font-size: 11px; text-align: center; color: #64748b; font-style: italic; margin: 15px 0;">"Tetaplah rendah hati dan jadilah kebanggaan SMAN 1 Cikalongwetan."</p>
             <button class="btn-cek" style="background:#64748b" onclick="location.reload()">KEMBALI</button>
         </div>
     </div>
